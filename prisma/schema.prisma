@@ -9,7 +9,6 @@ generator client {
 datasource db {
   provider             = "mysql"
   url                  = env("DATABASE_URL")
-  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
@@ -17,6 +16,21 @@ model Vote {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
 
-  votedFor     String
-  votedAgainst String
+  votedFor       Quote @relation(name: "votesFor", fields: [votedForId], references: [id])
+  votedForId     Int
+  votedAgainst   Quote @relation(name: "votesAgainst", fields: [votedAgainstId], references: [id])
+  votedAgainstId Int
+
+  @@index([votedForId])
+  @@index([votedAgainstId])
+}
+
+model Quote {
+  id        Int    @id
+  quote     String @db.VarChar(400)
+  author    String
+  permalink String
+
+  VoteFor     Vote[] @relation("votesFor")
+  VoteAgainst Vote[] @relation("votesAgainst")
 }
