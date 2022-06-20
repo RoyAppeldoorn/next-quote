@@ -1,49 +1,32 @@
 import type { NextPage } from "next";
-import { useQuery, useQueryClient } from "react-query";
-import Quote from "../components/Quote";
-
-interface Quote {
-  _id: string;
-  content: string;
-  author: string;
-  authorSlug: string;
-  length: number;
-  tags: String[];
-}
+import Link from "next/link";
+import QuoteItem from "../components/QuoteItem";
+import { useRandomQuotes } from "../hooks/useQuotes";
 
 const Home: NextPage = () => {
-  const {
-    isLoading,
-    error,
-    data: quote,
-    isError,
-  } = useQuery<Quote, Error>("quoteData", () =>
-    fetch("https://api.quotable.io/random").then((res) => res.json())
-  );
-
-  const queryClient = useQueryClient();
-
-  const refetch = () => {
-    queryClient.invalidateQueries("quoteData");
-  };
-
-  if (isLoading) {
-    return <span>Loading...</span>;
-  }
-
-  if (isError) {
-    return <span>Error: {error.message}</span>;
-  }
+  const { data: quotePair } = useRandomQuotes();
 
   return (
-    <div className="flex flex-col items-center justify-center w-screen h-screen">
-      {quote ? <Quote content={quote.content} author={quote.author} /> : null}
-      <button
-        className="px-4 py-2 text-gray-700 bg-white rounded-sm"
-        onClick={refetch}
-      >
-        Renew!
-      </button>
+    <div className="flex flex-col items-center justify-between w-screen h-screen p-8">
+      <div className="text-2xl text-center">
+        Which quote inspires you the most?
+      </div>
+
+      {quotePair && (
+        <div className="flex items-center justify-center">
+          <QuoteItem quote={quotePair.firstQuote} />
+          <span className="m-8">VERSUS</span>
+          <QuoteItem quote={quotePair.secondQuote} />
+        </div>
+      )}
+
+      {!quotePair && <img src="/rings.svg" className="w-48" alt="loading.." />}
+
+      <div className="w-full text-xl text-center">
+        <Link href="/results">
+          <a>Results</a>
+        </Link>
+      </div>
     </div>
   );
 };
