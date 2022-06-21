@@ -5,7 +5,7 @@ import { useCastVote, useRandomQuotes } from "../hooks/useQuotes";
 import Image from "next/image";
 
 const Home: NextPage = () => {
-  const { data: quotePair, isLoading, refetch } = useRandomQuotes();
+  const { data: quotePair, isLoading, refetch, isFetching } = useRandomQuotes();
   const voteMutation = useCastVote();
 
   const voteForQuote = (selectedQuote: number) => {
@@ -50,9 +50,10 @@ const Home: NextPage = () => {
         )}
       </div>
 
-      {!quotePair && (
-        <Image src="/rings.svg" width={192} height={192} alt="loading.." />
-      )}
+      {!quotePair ||
+        (isFetching && (
+          <Image src="/rings.svg" width={192} height={192} alt="loading.." />
+        ))}
     </div>
   );
 };
