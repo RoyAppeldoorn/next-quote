@@ -31,8 +31,8 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col items-center justify-center flex-grow pb-8">
       <div className="flex items-center justify-center">
-        {quotePair && !isFetching && (
-          <div className="flex flex-col items-center justify-center md:flex-row animate-fade-in">
+        {quotePair && (
+          <div className="flex flex-col items-start justify-center md:flex-row">
             <QuoteItem
               quote={quotePair.firstQuote}
               vote={() => voteForQuote(quotePair.firstQuote.id)}
@@ -50,10 +50,9 @@ const Home: NextPage = () => {
         )}
       </div>
 
-      {!quotePair ||
-        (isFetching && (
-          <Image src="/rings.svg" width={192} height={192} alt="loading.." />
-        ))}
+      {!quotePair && (
+        <Image src="/rings.svg" width={192} height={192} alt="loading.." />
+      )}
     </div>
   );
 };
