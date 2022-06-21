@@ -48,7 +48,7 @@ const ResultsPage: React.FC<{ quotes: QuoteQueryResponse[] }> = (props) => {
   });
 
   return (
-    <div className="flex flex-col items-center p-8">
+    <div className="flex flex-col items-center py-8">
       <Head>
         <title>Funniest Quote Results</title>
       </Head>
