@@ -5,7 +5,7 @@ import { useCastVote, useRandomQuotes } from "../hooks/useQuotes";
 import Image from "next/image";
 
 const Home: NextPage = () => {
-  const { data: quotePair, isLoading } = useRandomQuotes();
+  const { data: quotePair, isLoading, refetch } = useRandomQuotes();
   const voteMutation = useCastVote();
 
   const voteForQuote = (selectedQuote: number) => {
@@ -22,6 +22,8 @@ const Home: NextPage = () => {
         votedAgainst: quotePair.firstQuote.id,
       });
     }
+
+    refetch();
   };
 
   const isFetchingNext = voteMutation.isLoading || isLoading;

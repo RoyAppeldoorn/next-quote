@@ -26,18 +26,10 @@ export const useRandomQuotes = () => {
 export const useCastVote = () => {
   const queryClient = useQueryClient();
 
-  return useMutation(
-    (newVote: Vote) => {
-      return fetch("/api/vote", {
-        method: "POST",
-        body: JSON.stringify(newVote),
-      });
-    },
-    {
-      // invalidating the query fetches a new pair of quotes on success
-      onSuccess: () => {
-        queryClient.invalidateQueries("get-pair-of-quotes");
-      },
-    }
-  );
+  return useMutation((newVote: Vote) => {
+    return fetch("/api/vote", {
+      method: "POST",
+      body: JSON.stringify(newVote),
+    });
+  });
 };
