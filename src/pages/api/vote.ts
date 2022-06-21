@@ -6,9 +6,11 @@ export default async function handle(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const input = JSON.parse(req.body);
   const vote = await prisma.vote.create({
     data: {
-      ...req.body,
+      votedAgainstId: input.votedAgainst,
+      votedForId: input.votedFor,
     },
   });
   res.status(200).json({ vote });
