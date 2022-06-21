@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex flex-col items-center justify-center flex-grow pb-8">
       <div className="flex items-center justify-center">
-        {quotePair && (
+        {quotePair && !isFetching && (
           <div className="flex flex-col items-center justify-center md:flex-row animate-fade-in">
             <QuoteItem
               quote={quotePair.firstQuote}
