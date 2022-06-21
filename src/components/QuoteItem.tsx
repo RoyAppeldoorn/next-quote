@@ -8,13 +8,18 @@ export type Quote = {
 interface QuoteItemProps {
   quote: Quote;
   vote: () => void;
+  loading: boolean;
 }
 
 const btn =
   "items-center px-3 py-1.5 border border-gray-300 shadow-sm font-medium rounded-full text-gray-700 bg-white hover:bg-gray-100";
 
-const QuoteItem = ({ quote, vote }: QuoteItemProps) => (
-  <div className="flex flex-col items-center">
+const QuoteItem = ({ quote, vote, loading }: QuoteItemProps) => (
+  <div
+    className={`flex flex-col items-center transition-opacity ${
+      loading && "opacity-0"
+    }`}
+  >
     <blockquote
       key={quote.id}
       className="relative max-w-xl pb-4 m-8 text-lg italic border-b-2 border-gray-700 sm:text-xl"
@@ -27,7 +32,7 @@ const QuoteItem = ({ quote, vote }: QuoteItemProps) => (
       </cite>
     </blockquote>
 
-    <button className={btn} onClick={() => vote()}>
+    <button className={btn} disabled={loading} onClick={() => vote()}>
       Funnier
     </button>
   </div>
