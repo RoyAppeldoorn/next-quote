@@ -12,28 +12,28 @@ interface QuoteItemProps {
 }
 
 const btn =
-  "items-center px-3 py-1.5 border border-gray-300 shadow-sm font-medium rounded-full text-gray-700 bg-white hover:bg-gray-100";
+  "flex justify-self-end items-center px-8 py-1.5 border border-gray-300 shadow-sm font-medium rounded-full text-gray-700 bg-white hover:bg-gray-100";
 
 const QuoteItem = ({ quote, vote, loading }: QuoteItemProps) => (
   <div
-    className={`flex flex-col items-center transition-opacity ${
+    className={`flex flex-col items-center transition-opacity justify-between md:h-72 ${
       loading && "opacity-0"
     }`}
   >
     <blockquote
       key={quote.id}
-      className="relative max-w-xl pb-4 m-8 text-lg italic border-b-2 border-gray-700 sm:text-xl"
+      className="relative max-w-xl pb-4 m-8 text-lg italic sm:text-xl"
     >
-      <p className="mb-4">&quot;{quote.quote}&quot;</p>
-      <cite className="flex items-center">
-        <div className="flex flex-col items-start">
-          <span className="mb-1 text-sm italic font-bold">{quote.author}</span>
-        </div>
-      </cite>
+      <p className="mb-4 text-center">&quot;{quote.quote}&quot;</p>
+      <div className="flex flex-col">
+        <span className="mb-1 text-sm italic font-bold text-center">
+          {quote.author}
+        </span>
+      </div>
     </blockquote>
 
     <button className={btn} disabled={loading} onClick={() => vote()}>
-      Funnier
+      Vote
     </button>
   </div>
 );

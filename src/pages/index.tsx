@@ -29,34 +29,30 @@ const Home: NextPage = () => {
   const isFetchingNext = voteMutation.isLoading || isLoading;
 
   return (
-    <div className="flex flex-col items-center justify-between w-screen h-screen p-8">
-      <div className="text-2xl text-center">Which quote is funnier?</div>
-
-      {quotePair && (
-        <div className="flex items-center justify-center animate-fade-in">
-          <QuoteItem
-            quote={quotePair.firstQuote}
-            vote={() => voteForQuote(quotePair.firstQuote.id)}
-            loading={isFetchingNext}
-          />
-          <span className="m-8">VERSUS</span>
-          <QuoteItem
-            quote={quotePair.secondQuote}
-            vote={() => voteForQuote(quotePair.secondQuote.id)}
-            loading={isFetchingNext}
-          />
-        </div>
-      )}
+    <div className="flex flex-col items-center justify-center flex-grow">
+      <div className="flex items-center justify-center">
+        {quotePair && (
+          <div className="flex flex-col items-center justify-center md:flex-row animate-fade-in">
+            <QuoteItem
+              quote={quotePair.firstQuote}
+              vote={() => voteForQuote(quotePair.firstQuote.id)}
+              loading={isFetchingNext}
+            />
+            <span className="self-center m-8 mt-16 font-bold text-white md:mt-8">
+              VERSUS
+            </span>
+            <QuoteItem
+              quote={quotePair.secondQuote}
+              vote={() => voteForQuote(quotePair.secondQuote.id)}
+              loading={isFetchingNext}
+            />
+          </div>
+        )}
+      </div>
 
       {!quotePair && (
         <Image src="/rings.svg" width={192} height={192} alt="loading.." />
       )}
-
-      <div className="w-full text-xl text-center">
-        <Link href="/results">
-          <a>Results</a>
-        </Link>
-      </div>
     </div>
   );
 };

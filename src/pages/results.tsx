@@ -36,7 +36,7 @@ const QuoteRow: React.FC<{ quote: QuoteQueryResponse; rank: number }> = ({
         {quote.quote}
       </td>
       <td className="hidden px-3 py-4 text-sm whitespace-nowrap md:table-cell">
-        {generateCountPercent(quote).toFixed(0) + "%"}
+        {generateCountPercent(quote).toFixed(2) + "%"}
       </td>
     </tr>
   );
@@ -52,10 +52,12 @@ const ResultsPage: React.FC<{ quotes: QuoteQueryResponse[] }> = (props) => {
       <Head>
         <title>Funniest Quote Results</title>
       </Head>
-      <div className="text-2xl font-bold text-center">Results</div>
+      <div className="text-2xl font-bold text-center">
+        Funniest Quote Results
+      </div>
 
       <div className="mt-8 overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
-        <table className="max-w-xl min-w-full divide-y divide-gray-500 table-auto">
+        <table className="max-w-4xl min-w-full divide-y divide-gray-500 table-auto">
           <thead>
             <tr>
               <th
@@ -78,9 +80,9 @@ const ResultsPage: React.FC<{ quotes: QuoteQueryResponse[] }> = (props) => {
               </th>
               <th
                 scope="col"
-                className="hidden px-3 py-3 text-sm font-semibold text-left text-white md:table-cell"
+                className="hidden px-3 py-3 text-sm font-semibold text-left text-white md:table-cell whitespace-nowrap"
               >
-                Percentage
+                Win %
               </th>
             </tr>
           </thead>
