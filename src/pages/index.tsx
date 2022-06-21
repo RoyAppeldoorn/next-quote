@@ -29,7 +29,7 @@ const Home: NextPage = () => {
   const isFetchingNext = voteMutation.isLoading || isLoading;
 
   return (
-    <div className="flex flex-col items-center justify-center flex-grow">
+    <div className="flex flex-col items-center justify-center flex-grow pb-8">
       <div className="flex items-center justify-center">
         {quotePair && (
           <div className="flex flex-col items-center justify-center md:flex-row animate-fade-in">
