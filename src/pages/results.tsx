@@ -20,22 +20,22 @@ const generateCountPercent = (quote: QuoteQueryResponse) => {
   return (VoteFor / (VoteFor + VoteAgainst)) * 100;
 };
 
-const QuoteListing: React.FC<{ quote: QuoteQueryResponse; rank: number }> = ({
+const QuoteRow: React.FC<{ quote: QuoteQueryResponse; rank: number }> = ({
   quote,
   rank,
 }) => {
   return (
     <tr>
-      <td className="whitespace-nowrap py-4 pl-4 text-md sm:pl-6 font-bold">
+      <td className="py-4 pl-4 font-bold whitespace-nowrap text-md sm:pl-6">
         {rank}
       </td>
-      <td className="hidden whitespace-nowrap py-4 px-3 text-sm md:table-cell">
+      <td className="hidden px-3 py-4 text-sm whitespace-nowrap md:table-cell">
         {quote.author}
       </td>
-      <td className="whitespace-normal py-4 px-3 text-sm break-words">
+      <td className="px-3 py-4 text-sm break-words whitespace-normal">
         {quote.quote}
       </td>
-      <td className="hidden whitespace-nowrap py-4 px-3 text-sm md:table-cell">
+      <td className="hidden px-3 py-4 text-sm whitespace-nowrap md:table-cell">
         {generateCountPercent(quote).toFixed(0) + "%"}
       </td>
     </tr>
@@ -52,33 +52,33 @@ const ResultsPage: React.FC<{ quotes: QuoteQueryResponse[] }> = (props) => {
       <Head>
         <title>Funniest Quote Results</title>
       </Head>
-      <div className="text-2xl text-center font-bold">Results</div>
+      <div className="text-2xl font-bold text-center">Results</div>
 
-      <div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 mt-8">
-        <table className="divide-y divide-gray-500 table-auto max-w-xl min-w-full">
+      <div className="mt-8 overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
+        <table className="max-w-xl min-w-full divide-y divide-gray-500 table-auto">
           <thead>
             <tr>
               <th
                 scope="col"
-                className="py-3 pl-4 pr-3 text-left text-sm font-semibold text-white sm:pl-6"
+                className="py-3 pl-4 pr-3 text-sm font-semibold text-left text-white sm:pl-6"
               >
                 Rank
               </th>
               <th
                 scope="col"
-                className="px-3 py-3 text-left text-sm font-semibold text-white hidden md:table-cell"
+                className="hidden px-3 py-3 text-sm font-semibold text-left text-white md:table-cell"
               >
                 Author
               </th>
               <th
                 scope="col"
-                className="px-3 py-3 text-left text-sm font-semibold text-white"
+                className="px-3 py-3 text-sm font-semibold text-left text-white"
               >
                 Quote
               </th>
               <th
                 scope="col"
-                className="px-3 py-3 text-left text-sm font-semibold text-white hidden md:table-cell"
+                className="hidden px-3 py-3 text-sm font-semibold text-left text-white md:table-cell"
               >
                 Percentage
               </th>
@@ -88,11 +88,7 @@ const ResultsPage: React.FC<{ quotes: QuoteQueryResponse[] }> = (props) => {
           <tbody className="divide-y divide-gray-700">
             {filteredQuotes.map((currentQuote, index) => {
               return (
-                <QuoteListing
-                  quote={currentQuote}
-                  key={index}
-                  rank={index + 1}
-                />
+                <QuoteRow quote={currentQuote} key={index} rank={index + 1} />
               );
             })}
           </tbody>

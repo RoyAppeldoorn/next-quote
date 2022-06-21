@@ -17,7 +17,7 @@ const QuoteItem = ({ quote, vote }: QuoteItemProps) => (
   <div className="flex flex-col items-center">
     <blockquote
       key={quote.id}
-      className="relative max-w-xl pb-4 m-8 text-lg sm:text-xl italic border-b-2 border-gray-700"
+      className="relative max-w-xl pb-4 m-8 text-lg italic border-b-2 border-gray-700 sm:text-xl"
     >
       <p className="mb-4">&quot;{quote.quote}&quot;</p>
       <cite className="flex items-center">
