@@ -24,8 +24,6 @@ export const useRandomQuotes = () => {
 };
 
 export const useCastVote = () => {
-  const queryClient = useQueryClient();
-
   return useMutation((newVote: Vote) => {
     return fetch("/api/vote", {
       method: "POST",
