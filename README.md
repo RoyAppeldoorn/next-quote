@@ -19,6 +19,13 @@
 - Vote between two quotes
 - See the overall results (cached and revalidated after 10 minutes once a user visits the /results page)
 
+## Tech-stack
+
+- [Next.js](https://nextjs.org/) SSR React framework (used for caching the /results page)
+- [Tailwind.css](https://tailwindcss.com/) for utility-first CSS styling
+- [Prisma](https://www.prisma.io/) as Database ORM
+- [Planetscale](https://planetscale.com/) as MySQL database host
+
 ## Installation and Setup Instructions
 
 Prerequisite:
