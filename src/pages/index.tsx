@@ -36,7 +36,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="flex items-center justify-center">
         {quotePair && (
-          <div className="flex flex-col items-start justify-center md:flex-row">
+          <div className="flex flex-col items-center justify-center md:flex-row">
             <QuoteItem
               quote={quotePair.firstQuote}
               vote={() => voteForQuote(quotePair.firstQuote.id)}
