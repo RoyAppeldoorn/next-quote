@@ -16,7 +16,7 @@ const btn =
 
 const QuoteItem = ({ quote, vote, loading }: QuoteItemProps) => (
   <div
-    className={`flex flex-col items-center transition-opacity justify-between md:h-72 ${
+    className={`flex flex-col items-center transition-opacity justify-between md:h-72 max-w-xl w-full ${
       loading && "opacity-0"
     }`}
   >
