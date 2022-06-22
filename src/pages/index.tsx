@@ -3,6 +3,7 @@ import Link from "next/link";
 import QuoteItem from "../components/QuoteItem";
 import { useCastVote, useRandomQuotes } from "../hooks/useQuotes";
 import Image from "next/image";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   const { data: quotePair, isLoading, refetch, isFetching } = useRandomQuotes();
@@ -30,6 +31,9 @@ const Home: NextPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center flex-grow pb-8">
+      <Head>
+        <title>Funniest Quote</title>
+      </Head>
       <div className="flex items-center justify-center">
         {quotePair && (
           <div className="flex flex-col items-start justify-center md:flex-row">
