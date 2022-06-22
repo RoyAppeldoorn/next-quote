@@ -14,6 +14,11 @@
          alt="Gitter">
 </p>
 
+## Features
+
+- Vote between two quotes
+- See the overall results (cached and revalidated after 10 minutes once a user visits the /results page)
+
 ## Installation and Setup Instructions
 
 Prerequisite:
