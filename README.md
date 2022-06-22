@@ -14,6 +14,8 @@
          alt="Gitter">
 </p>
 
+![next-quote](https://user-images.githubusercontent.com/22290247/175032567-2aa08625-e691-4519-9404-91237669da46.gif)
+
 ## Features
 
 - Vote between two quotes
