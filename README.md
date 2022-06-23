@@ -23,7 +23,7 @@
 
 ## Tech-stack
 
-- [Next.js](https://nextjs.org/) SSR React framework (used for caching the /results page)
+- [Next.js](https://nextjs.org/) SSR React framework
 - [Tailwind.css](https://tailwindcss.com/) for utility-first CSS styling
 - [Prisma](https://www.prisma.io/) as Database ORM
 - [Planetscale](https://planetscale.com/) as MySQL database host
@@ -41,6 +41,7 @@ Setup
 1. `npm install`
 2. Create `.env` file
 3. Add a `DATABASE_URL=` variable with the connection string to your MySQL instance
-4. Generate database schema - `npx prisma generate`
-5. Seed the database with quotes - `npm run ts-node ./scripts/db-backfill.ts`
-6. Run the dev server - `npm run dev`
+4. Generate artifacts (e.g. Prisma Client) - `npx prisma generate`
+5. Generate db schema - `npx prisma db push`
+6. Seed the database with quotes - `npm run ts-node ./scripts/db-backfill.ts`
+7. Run the dev server - `npm run dev`
